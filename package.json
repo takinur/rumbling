@@ -13,6 +13,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "firebase": "^9.8.4",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
