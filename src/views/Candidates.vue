@@ -1,26 +1,8 @@
-<template>
-  <div class="example list-example">
-    <ul ref="list">
-      <li v-for="item in items" :key="item">
-        <span>{{ item }}</span>
-        <button @click.prevent="remove(item)" aria-label="Remove Fruit">
-          <IconRemove />
-        </button>
-      </li>
-    </ul>
-
-    <button class="button button--add button--alt" @click="add">
-      + Add Fruit
-    </button>
-    <button class="button button--random button--alt" @click="randomize">
-      Randomize
-    </button>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import autoAnimate from "@formkit/auto-animate";
+
+
 const items = ref(["🍎 Apple", "🍌 Banana", "🍒 Cherry"]);
 const list = ref<HTMLElement>();
 const fruitBasket = [
@@ -32,7 +14,7 @@ const fruitBasket = [
   "🍍 Pineapple",
   "🍐 Pear",
   "🍑 Peach",
-  "🫐 Blueberry",
+  "👀 Blueberry",
   "🍊 Orange",
   "🥭 Mango",
 ];
@@ -50,15 +32,36 @@ const add = () => {
     items.value.splice(
       Math.round(Math.random() * items.value.length - 1),
       0,
-      fruitBasket.shift()
+      fruitBasket.shift() as string
     );
   } else {
     alert("Out of fruit!");
   }
 };
 const randomize = () => items.value.sort(() => (Math.random() > 0.5 ? 1 : -1));
-onMounted(() => autoAnimate(list.value));
+onMounted(() => autoAnimate(list.value as HTMLElement));
 </script>
+
+<template>
+  <div class="example list-example">
+    <ul ref="list">
+      <li v-for="item in items" :key="item">
+        <span>{{ item }}</span>
+        <button @click.prevent="remove(item)" aria-label="Remove Fruit">
+          DELETE
+        </button>
+      </li>
+    </ul>
+
+    <button class="button button--add button--alt" @click="add">
+      + Add Fruit
+    </button>
+    <button class="button button--random button--alt" @click="randomize">
+      Randomize
+    </button>
+  </div>
+</template>
+
 
 <style scoped>
 ul {

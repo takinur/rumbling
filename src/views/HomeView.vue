@@ -1,9 +1,105 @@
 <script setup lang="ts">
-import TheWelcome from '@/components/TheWelcome.vue'
+import { ref, onMounted } from "vue";
+import autoAnimate from "@formkit/auto-animate";
+
+
+const items = ref(["🍎 Apple", "🍌 Banana", "🍒 Cherry"]);
+const list = ref<HTMLElement>();
+const fruitBasket = [
+  "🍓 Strawberry",
+  "🥥 Coconut",
+  "🥝 Kiwi",
+  "🍇 Grape",
+  "🍉 Watermelon",
+  "🍍 Pineapple",
+  "🍐 Pear",
+  "🍑 Peach",
+  "👀 Blueberry",
+  "🍊 Orange",
+  "🥭 Mango",
+];
+const remove = (item: any) => {
+  items.value = items.value.filter((fruit) => {
+    if (fruit === item) {
+      fruitBasket.push(fruit);
+      return false;
+    }
+    return true;
+  });
+};
+const add = () => {
+  if (fruitBasket.length) {
+    items.value.splice(
+      Math.round(Math.random() * items.value.length - 1),
+      0,
+      fruitBasket.shift() as string
+    );
+  } else {
+    alert("Out of fruit!");
+  }
+};
+const randomize = () => items.value.sort(() => (Math.random() > 0.5 ? 1 : -1));
+onMounted(() => autoAnimate(list.value as HTMLElement));
 </script>
 
 <template>
-  <main class="h-screen">
-    <h2> Nothing to view at Home</h2>
-  </main>
+  <div class="example list-example">
+    <ul ref="list">
+      <li v-for="item in items" :key="item">
+        <span>{{ item }}</span>
+        <button @click.prevent="remove(item)" aria-label="Remove Fruit">
+          DELETE
+        </button>
+      </li>
+    </ul>
+
+    <button class="button button--add button--alt" @click="add">
+      + Add Fruit
+    </button>
+    <button class="button button--random button--alt" @click="randomize">
+      Randomize
+    </button>
+  </div>
 </template>
+
+
+<style scoped>
+ul {
+  list-style-type: none;
+  padding: 0;
+  max-width: 300px;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75em;
+  background-color: white;
+  margin-bottom: 0.5em;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+  font-size: 0.875em;
+}
+[data-dark-mode="true"] li {
+  background-color: var(--purple-md);
+}
+li::before {
+  display: none;
+}
+li button {
+  appearance: none;
+  border: none;
+  padding: none;
+  margin: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+li button svg {
+  width: 1.2em;
+  fill: red;
+}
+[data-dark-mode="true"] li button svg {
+  fill: rgb(244, 67, 67);
+}
+</style>
