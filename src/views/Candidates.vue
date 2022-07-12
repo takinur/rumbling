@@ -28,12 +28,12 @@ const items = ref([
 ]);
 const current: any = ref(items.value[0].id);
 
-const handleClick = () => {
-  console.log("clicked");
-};
-const handleRotate = () => {
-  console.log("Rotated");
-};
+// const handleClick = () => {
+//   console.log("clicked");
+// };
+// const handleRotate = () => {
+//   console.log("Rotated");
+// };
 </script>
 
 <template>
@@ -44,7 +44,7 @@ const handleRotate = () => {
           <h2 class="text-xl font-semibold text-vnet-blue mb-2">
             Accrodion --VUE Tailwind
           </h2>
-          <ul class="flex flex-col">
+          <ul class="flex flex-col" >
             <li
               class="bg-white my-2 shadow-lg"
               v-for="item in items"

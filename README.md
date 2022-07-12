@@ -1,6 +1,6 @@
 # rumbling
 
-Magical TODO with Firebase Vue 3 in Vite.
+Magical TODO with Firebase, Vue 3 and vite.
 
 ## Recommended IDE Setup
 
