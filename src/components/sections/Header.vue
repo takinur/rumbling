@@ -1,3 +1,12 @@
+<script setup lang="ts" >
+
+const props = defineProps({
+    href: String,
+    active: Boolean,
+});
+
+</script>
+
 <template>
   <header>
     <nav
@@ -51,13 +60,5 @@
     </nav>
   </header>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "Header",
-});
-</script>
 
 <style scoped></style>
