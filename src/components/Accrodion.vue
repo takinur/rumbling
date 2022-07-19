@@ -15,6 +15,8 @@ const props = defineProps({
 });
 
 
+//sleep for a while to make sure the items are loaded
+
 
 const current: any = ref(props.items[0].id);
 </script>
