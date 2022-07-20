@@ -5,7 +5,6 @@ console.log('From another World');
 
 <template>
   <div>
-    <h1>YES LOADING</h1>
     <content-loader
       viewBox="0 0 476 124"
       primaryColor="#f5f5f5"

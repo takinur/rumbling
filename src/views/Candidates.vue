@@ -7,7 +7,7 @@ import LoadingVue from "../components/Loading.vue";
 
 const MyAsyncComponenetVue = defineAsyncComponent({
   loader: () => import("../components/MyAsyncComponent.vue"),
-  loadingComponent: LoadingVue,
+  // loadingComponent: LoadingVue,
   suspensible: true
 });
 
