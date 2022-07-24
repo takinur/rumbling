@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import BaseSelectVue from "@/components/BaseSelect.vue";
+import TerminalVue from "@/components/Terminal.vue";
 
 const categories = ref([
   "Fruits",
@@ -18,14 +19,14 @@ const form = ref({
   name: "",
   description: "",
 });
-
-
-
 </script>
 
 <template>
   <div class="about">
-    <h1 text-green-500>This is an about page</h1>
+    <h1 class="text-green-500 text-lg text-center">This is an about page</h1>
+
+    <TerminalVue />
+    <div id="some-space" class="my-20">Hi</div>
     <BaseSelectVue
       :options="categories"
       v-model="form.category"
