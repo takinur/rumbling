@@ -2,22 +2,25 @@
 import { ref, onMounted } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import HeaderVue from "./components/sections/Header.vue";
+// import { ITheme } from './utils/theme';
+
+// const theme = ref<ITheme>('theme', 'light')
 
 // const theme = ref();
-// const htmlElem  = document.querySelector("html");
+const htmlElem  = document.querySelector("html");
 
-// onMounted(() => {
-//   if (
-//     localStorage.theme === "dark" ||
-//     (!("theme" in localStorage) &&
-//       window.matchMedia("(prefers-color-scheme: dark)").matches)
-//   ) {
-//     htmlElem?.classList.add("dark");
-//   } else {
-//     htmlElem?.classList.remove("dark");
-//   }
-//   console.log("current theme: ", localStorage.theme);
-// });
+onMounted(() => {
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    htmlElem?.classList.add("dark");
+  } else {
+    htmlElem?.classList.remove("dark");
+  }
+  console.log("current theme: ", localStorage.theme);
+});
 </script>
 
 <template>
