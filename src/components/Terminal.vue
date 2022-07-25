@@ -45,10 +45,10 @@ const tasks = ref([
         <div class="flex space-x-1">
           <span class="font-bold">{{ task.name }}</span>
           <!--FIXME: Reapeated DOT -->
-          <span class="flex-1 after:content-repeat-[.] text-gray-50"></span>
-          <span class="font-bold text-green-400 uppercase">{{
-            task.status
-          }}</span>
+          <span class="flex-1 after:content-['................................................................'] text-gray-50"></span>
+          <span class="font-bold text-green-400 uppercase">
+            {{ task.status }}
+          </span>
         </div>
       </div>
     </div>
